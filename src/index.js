@@ -1,8 +1,9 @@
 const Generator = require('yeoman-generator')
-const { execSync, spawnSync } = require('child_process')
+const { execSync } = require('child_process')
 const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')
+const config = require('./config')
 
 const shouldUseYarn = () => {
   try {
@@ -23,20 +24,13 @@ module.exports = class extends Generator {
       `Salutations from ${chalk.red('create-ecma-app')} generator by Tacnoman`
     );
 
-    var prompts = [
-      {
-        type: 'input',
-        name: 'name',
-        message: 'Name your app, "<answer>":',
-        default: 'app',
-      }
-    ]
+    var prompts = []
 
     return this.prompt(prompts).then(props => {
       this.props = props
       this.props.author = `${this.user.git.name()} <${this.user.git.email()}>`
       this.props.description = 'My awesome ecma project'
-      this.props.packageName = props.name
+      this.props.packageName = config.appName
       this.props.packageNamePascalCase = this.props.packageName.
         split('-').
         reduce( (PascalCase, word) => (

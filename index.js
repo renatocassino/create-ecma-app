@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
 const chalk = require('chalk')
-const { Command } = require('commander')
-const package = require('./package.json')
 const semver = require('semver')
-const fs = require('fs')
 const path = require('path')
+const config = require('./src/config')
 
 if (!semver.satisfies(process.version, '>=8.0')) {
   console.log(
@@ -17,39 +15,8 @@ if (!semver.satisfies(process.version, '>=8.0')) {
   process.exit(1)
 }
 
-let projectName
-const program = new Command(package.name)
-  .version(package.version)
-  .arguments('<project-directory>')
-  .usage(`${chalk.green('<project-directory>')} [options]`)
-  .action(name => (projectName = name))
-  .option('--verbose', 'print additional logs')
-  .allowUnknownOption()
-  .on('--help', () => {
-    console.log(`    Only ${chalk.green('<project-directory>')} is required.\n`)
-  })
-  .parse(process.argv)
-
-const createDir = (appPath) => {
-  try {
-    fs.mkdirSync(appPath)
-  } catch (err) {
-    if (err.code === 'EEXIST') {
-      console.error(
-        chalk.red(`
-          Directory ${appPath} already exists, refusing to overwrite.
-        `)
-      )
-      process.exit(1)
-    } else {
-      throw err
-    }
-  }
-}
-
 const run = async () => {
-  const appName = projectName
-  const programName = program.name()
+  const { appName, programName } = config
 
   if (typeof appName === 'undefined') {
     console.error(`Please specify the project directory:
@@ -61,9 +28,6 @@ const run = async () => {
       Run ${chalk.cyan(`${programName} --help`)} to see all options.`)
     process.exit(1)
   }
-
-  // const useYarn = shouldUseYarn()
-  createDir(path.join(process.cwd(), appName))
 
   const args = [process.argv[0], process.argv[1]]
   args.push(path.join(__dirname, 'src'))
