@@ -1,5 +1,3 @@
-const showMessage = (message) => {
-  return `Hello ${message}!`
-}
+const showMessage = (message) => `Hello ${message}!`;
 
-export default showMessage
+export default showMessage;
