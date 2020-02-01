@@ -13,7 +13,7 @@
     "test:coverage": "jest --coverage .",
     "validate": "yarn test && yarn lint"
   },
-  "keywords": [],
+  "keywords": ["create-ecma-app", "generated"],
   "author": "<%= author %>",
   "license": "MIT",
   "devDependencies": {

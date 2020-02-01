@@ -1,7 +1,7 @@
 {
   "name": "create-ecma-app",
   "version": "0.0.4",
-  "description": "",
+  "description": "Project to generate a boilerplate with ecma6 configured like create-react-app",
   "main": "index.js",
   "bin": {
     "create-ecma-app": "./index.js"
@@ -12,7 +12,7 @@
   "files": [
     "src/template"
   ],
-  "keywords": [],
+  "keywords": ["create", "generator", "ecma", "babel"],
   "author": "Tacnoman <renatocassino@gmail.com>",
   "license": "MIT",
   "dependencies": {
