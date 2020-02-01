@@ -69,8 +69,15 @@ const run = async () => {
     process.exit(1)
   }
 
-  const useYarn = shouldUseYarn()
+  // const useYarn = shouldUseYarn()
   createDir(path.join(process.cwd(), appName))
+
+  const args = [process.argv[0], process.argv[1]]
+  args.push(path.join(__dirname, 'src', 'generator'))
+  process.argv.slice(2).forEach(v => args.push(v))
+  process.argv = args
+
+  require('yo/lib/cli')
 }
 
 run()
