@@ -1,6 +1,6 @@
 {
   "name": "create-ecma-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -11,5 +11,10 @@
   },
   "keywords": [],
   "author": "Tacnoman <renatocassino@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.1.0",
+    "semver": "^7.1.2"
+  }
 }
