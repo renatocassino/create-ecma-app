@@ -13,13 +13,15 @@
     "release:major": "standard-version --release-as major && git push origin master --tag && npm publish"
   },
   "files": [
-    "src/template"
+    "src",
+    "index.js"
   ],
   "keywords": [
     "create",
     "generator",
     "ecma",
-    "babel"
+    "babel",
+    "boilerplate"
   ],
   "author": "Tacnoman <renatocassino@gmail.com>",
   "license": "MIT",
