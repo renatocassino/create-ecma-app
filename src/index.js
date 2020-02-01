@@ -43,9 +43,6 @@ module.exports = class extends Generator {
 
   writing() {
     const walkSync = (dir, filelist = []) => {
-      if (dir.match(/node_modules|dist/)) return filelist
-      console.log(dir)
-
       fs.readdirSync(dir).forEach(file => {
         filelist = fs.statSync(path.join(dir, file)).isDirectory()
           ? walkSync(path.join(dir, file), filelist)
