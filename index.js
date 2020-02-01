@@ -63,8 +63,10 @@ const run = async () => {
   if (typeof appName === 'undefined') {
     console.error(`Please specify the project directory:
       ${chalk.cyan(programName)} ${chalk.green('<project-directory>')}
+
       For example:
       ${chalk.cyan(programName)} ${chalk.green('my-node-app')}
+
       Run ${chalk.cyan(`${programName} --help`)} to see all options.`)
     process.exit(1)
   }
@@ -77,6 +79,7 @@ const run = async () => {
   process.argv.slice(2).forEach(v => args.push(v))
   process.argv = args
 
+  // Run Yeoman
   require('yo/lib/cli')
 }
 
