@@ -22,5 +22,10 @@
     "eslint-plugin-import": "^2.20.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "morgan": "^1.9.1",
+    "winston": "^3.2.1"
   }
 }
