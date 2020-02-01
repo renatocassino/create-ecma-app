@@ -30,15 +30,6 @@ const program = new Command(package.name)
   })
   .parse(process.argv)
 
-const shouldUseYarn = () => {
-  try {
-    execSync('yarnpkg --version', { stdio: 'ignore' })
-    return true
-  } catch (e) {
-    return false
-  }
-}
-
 const createDir = (appPath) => {
   try {
     fs.mkdirSync(appPath)
@@ -75,7 +66,7 @@ const run = async () => {
   createDir(path.join(process.cwd(), appName))
 
   const args = [process.argv[0], process.argv[1]]
-  args.push(path.join(__dirname, 'src', 'generator'))
+  args.push(path.join(__dirname, 'src'))
   process.argv.slice(2).forEach(v => args.push(v))
   process.argv = args
 
