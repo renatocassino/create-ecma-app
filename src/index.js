@@ -29,22 +29,13 @@ module.exports = class extends Generator {
         name: 'name',
         message: 'Name your app, "<answer>":',
         default: 'app',
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'Describe it:'
-      },
-      {
-        type: 'input',
-        name: 'author',
-        message: 'Tell me the author:',
-        default: this.user.git.name() + ' <' + this.user.git.email() + '>'
-      },
+      }
     ]
 
     return this.prompt(prompts).then(props => {
       this.props = props
+      this.props.author = `${this.user.git.name()} <${this.user.git.email()}>`
+      this.props.description = 'My awesome ecma project'
       this.props.packageName = props.name
       this.props.packageNamePascalCase = this.props.packageName.
         split('-').
@@ -83,7 +74,7 @@ module.exports = class extends Generator {
   install() {
     this.log(chalk.blue.bold('❯  Calling yarn install...'))
     this.spawnCommandSync(
-      'yarn',
+      shouldUseYarn() ? 'yarn' : 'npm',
       [
         'install',
       ],
