@@ -7,7 +7,10 @@
     "create-ecma-app": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release:patch": "standard-version --release-as patch && git push origin master --tag && npm publish",
+    "release:minor": "standard-version --release-as minor && git push origin master --tag && npm publish",
+    "release:major": "standard-version --release-as major && git push origin master --tag && npm publish"
   },
   "files": [
     "src/template"
@@ -28,6 +31,7 @@
     "yeoman-generator": "^4.5.0"
   },
   "devDependencies": {
+    "standard-version": "^7.1.0",
     "yo": "^3.1.1"
   },
   "repository": {
