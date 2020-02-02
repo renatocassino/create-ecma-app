@@ -56,7 +56,7 @@ module.exports = class extends Generator {
     filelist.forEach(file => {
       this.fs.copyTpl(
         this.templatePath(file),
-        this.destinationPath(file),
+        this.destinationPath(file.replace('_gitignore', '.gitignore')),
         this.props
       )
     })
