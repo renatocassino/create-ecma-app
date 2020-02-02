@@ -14,7 +14,8 @@
   },
   "files": [
     "src",
-    "index.js"
+    "index.js",
+    "src/templates/.gitignore"
   ],
   "keywords": [
     "create",
