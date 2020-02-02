@@ -77,13 +77,13 @@ module.exports = class extends Generator {
     )
 
     this.log(`
-    ${chalk.blue('❯ Project done 😎')}
+  ${chalk.blue('❯ Project done 😎')}
 
-    Now you can run:
+  Now you can run:
 
-      ${chalk.yellow(`$ cd ${this.props.packageName} && yarn dev`)}
-      
-    and start to write code with Ecma
+    ${chalk.yellow(`$ cd ${this.props.packageName} && yarn dev`)}
+
+  and start to write code with Ecma
     `)
   }
 };
