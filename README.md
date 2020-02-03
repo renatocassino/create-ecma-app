@@ -1,3 +1,5 @@
+![HitCount](http://hits.dwyl.io/tacnoman/create-ecma-app.svg)
+
 # Create Ecma App
 
 This project is like a create-react-app. Everybody knows that install and configure Babel is boring.
