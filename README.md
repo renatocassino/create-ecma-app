@@ -25,6 +25,7 @@ In your project you have the commands:
 |---------------|----------------------------------------------------------|
 | start         | Start the project in production mode (must build before) |
 | build         | Build the project in `dist` folder                       |
+| build:web     | Build the project in `dist` folder to run in browser     |
 | dev           | Run in development mode with watcher                     |
 | lint          | Run lint validator using Airbnb lint pattern             |
 | lint:fix      | Run lint validator and fix some bugs if exists           |
