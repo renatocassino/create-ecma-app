@@ -30,11 +30,11 @@
     "commander": "^4.1.0",
     "semver": "^7.1.2",
     "yeoman-environment": "^2.7.0",
-    "yeoman-generator": "^4.5.0"
+    "yeoman-generator": "^4.5.0",
+    "yo": "^3.1.1"
   },
   "devDependencies": {
-    "standard-version": "^7.1.0",
-    "yo": "^3.1.1"
+    "standard-version": "^7.1.0"
   },
   "repository": {
     "type": "git",
