@@ -7,6 +7,11 @@ This project is like a create-react-app. Everybody knows that install and config
 
 This boilerplate uses the last version of babel and create a small vanilla project using Ecma features.
 
+<p align="center">
+  <img src="https://github.com/tacnoman/create-ecma-app/blob/master/images/demo.gif?raw=true" width="600" alt="create ecma app command">
+</p>
+
+
 ## Create your own project
 
 To create your project you only must run:
