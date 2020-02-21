@@ -23,7 +23,26 @@ To create your project you only must run:
 
 And now you have a node with ecma features working.
 
-## Commands
+### Options to create your project
+
+The create-ecma-app will generate the project with default params, but you can set
+passing params in terminal.
+
+```bash
+Usage: create-ecma-app <project-name> [options]
+
+Options:
+  -V, --version                    output the version number
+  -v, --verbose                    print additional logs
+  -d, --description [description]  description to project
+  -a, --author [author]            author of the project
+  --ask-me                         the create-ecma-app will ask about props
+                                   in generation
+  -h, --help                       output usage information
+    Only <project-name> is required.
+```
+
+## Commands in project generated
 
 In your project you have the commands:
 
