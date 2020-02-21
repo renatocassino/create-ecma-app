@@ -1,4 +1,4 @@
-[![Version](http://img.shields.io/npm/v/create-ecma-app.svg)](https://www.npmjs.org/package/create-ecma-app) [![Build Status](https://travis-ci.org/tacnoman/create-ecma-app.svg?branch=master)](https://travis-ci.org/tacnoman/create-ecma-app) [![Code Climate](https://codeclimate.com/github/tacnoman/create-ecma-app/badges/gpa.svg)](https://codeclimate.com/github/tacnoman/create-ecma-app) [![HitCount](http://hits.dwyl.io/tacnoman/create-ecma-app.svg)](http://hits.dwyl.io/tacnoman/create-ecma-app)
+[![Version](http://img.shields.io/npm/v/create-ecma-app.svg)](https://www.npmjs.org/package/create-ecma-app) [![Build Status](https://travis-ci.org/tacnoman/create-ecma-app.svg?branch=master)](https://travis-ci.org/tacnoman/create-ecma-app) [![Code Climate](https://codeclimate.com/github/tacnoman/create-ecma-app/badges/gpa.svg)](https://codeclimate.com/github/tacnoman/create-ecma-app) [![codecov](https://codecov.io/gh/tacnoman/create-ecma-app/branch/master/graph/badge.svg)](https://codecov.io/gh/tacnoman/create-ecma-app) [![HitCount](http://hits.dwyl.io/tacnoman/create-ecma-app.svg)](http://hits.dwyl.io/tacnoman/create-ecma-app)
 
 
 # Create Ecma App
