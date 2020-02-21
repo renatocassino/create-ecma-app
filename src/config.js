@@ -8,12 +8,11 @@ new Command(packageJSON.name)
   .version(packageJSON.version)
   .arguments('<project-directory>')
   .usage(`${chalk.green('<project-directory>')} [options]`)
-  .option('--verbose', 'print additional logs')
+  .option('-v, --verbose', 'print additional logs')
   .option('-d, --description [description]', 'Add description to project')
   .action((name, options) => {
     config = {
       appName: name,
-      programName: options.name,
       ...options,
     };
   })

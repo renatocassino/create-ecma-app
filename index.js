@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const semver = require('semver');
 const path = require('path');
 const config = require('./src/config');
+const { name } = require('./package.json');
 
 if (!semver.satisfies(process.version, '>=8.0')) {
   console.log(
@@ -15,17 +16,20 @@ if (!semver.satisfies(process.version, '>=8.0')) {
   process.exit(1);
 }
 
-const run = async () => {
-  const { appName, programName } = config;
+const main = async () => {
+  const { appName } = config;
 
-  if (typeof appName === 'undefined') {
-    console.error(`Please specify the project directory:
-      ${chalk.cyan(programName)} ${chalk.green('<project-directory>')}
+  if (typeof appName === 'undefined' || appName === '') {
+    console.error(`
+  Please specify the name of the project:
+    ${chalk.cyan(name)} ${chalk.green('<project-name>')}
 
-      For example:
-      ${chalk.cyan(programName)} ${chalk.green('my-node-app')}
+  For example:
+    ${chalk.cyan(name)} ${chalk.green('my-node-app')}
 
-      Run ${chalk.cyan(`${programName} --help`)} to see all options.`);
+  Run ${chalk.cyan(`${name} --help`)} to see all options.
+    `);
+
     process.exit(1);
   }
 
@@ -38,4 +42,4 @@ const run = async () => {
   require('yo/lib/cli');
 };
 
-run();
+main();
