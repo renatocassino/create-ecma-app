@@ -1,11 +1,14 @@
 language: node_js
 node_js:
   - "stable"
+install:
+  - npm install -g codecov
 script:
   - echo "Running lint:"
   - npm run lint
   - echo "Running unit tests:"
   - npm test
+  - codecov
   - echo "Running generator of project"
   - node index.js my-app
   - cd my-app && yarn validate

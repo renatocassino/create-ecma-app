@@ -44,7 +44,9 @@
   "jest": {
     "testPathIgnorePatterns": [
       "<rootDir>/src/templates/"
-    ]
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "repository": {
     "type": "git",
