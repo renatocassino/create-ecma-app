@@ -18,5 +18,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'global-require': 'off',
     'no-return-assign': 'off',
+    'no-console': 'off',
   },
 };
