@@ -5,6 +5,7 @@ Array [
   ".babelrc",
   ".editorconfig",
   ".eslintrc.js",
+  "README.md",
   "_gitignore",
   "package.json",
   "src/__tests__/message.spec.js",

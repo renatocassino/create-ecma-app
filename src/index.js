@@ -27,6 +27,7 @@ module.exports = class extends Generator {
       this.props.author = `${this.user.git.name()} <${this.user.git.email()}>`;
       this.props.description = 'My awesome ecma project';
       this.props.packageName = config.appName;
+      this.props.commandToRun = shouldUseYarn() ? 'yarn' : 'npm run';
       this.props.packageNamePascalCase = this.props.packageName
         .split('-')
         .reduce((PascalCase, word) => (
