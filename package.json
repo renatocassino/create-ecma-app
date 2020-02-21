@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
     "release:patch": "standard-version --release-as patch && git push origin master --tag && npm publish",
     "release:minor": "standard-version --release-as minor && git push origin master --tag && npm publish",
     "release:major": "standard-version --release-as major && git push origin master --tag && npm publish"
@@ -34,6 +35,10 @@
     "yo": "^3.1.1"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^25.1.0",
     "standard-version": "^7.1.0"
   },
   "repository": {
