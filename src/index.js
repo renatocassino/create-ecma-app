@@ -13,10 +13,32 @@ module.exports = class extends Generator {
 
     const prompts = [];
 
+    const defaultAuthor = `${this.user.git.name()} <${this.user.git.email()}>`;
+
+    if (config.askMe) {
+      if (!config.description) {
+        prompts.push({
+          type: 'input',
+          name: 'description',
+          message: 'Description of your app to package.json',
+          default: 'My awesome project',
+        });
+      }
+
+      if (!config.author) {
+        prompts.push({
+          type: 'input',
+          name: 'author',
+          message: 'Author of the project (format "Name <email@domain.com>"): ',
+          default: defaultAuthor,
+        });
+      }
+    }
+
     return this.prompt(prompts).then((props) => {
       this.props = props;
-      this.props.author = `${this.user.git.name()} <${this.user.git.email()}>`;
-      this.props.description = config.description || 'My awesome ecma project';
+      this.props.author = props.author || config.author || defaultAuthor;
+      this.props.description = props.description || config.description || 'My awesome ecma project';
       this.props.packageName = config.appName;
       this.props.commandToRun = shouldUseYarn() ? 'yarn' : 'npm run';
       this.props.packageNamePascalCase = this.props.packageName
@@ -24,6 +46,7 @@ module.exports = class extends Generator {
         .reduce((PascalCase, word) => (
           PascalCase + word.replace(/^([a-z])/, (g) => g[0].toUpperCase())
         ), '');
+
       this.props.year = new Date().getFullYear();
       this.destinationRoot(path.join(process.cwd(), this.props.packageName));
     });

@@ -6,10 +6,12 @@ let config = {};
 
 new Command(packageJSON.name)
   .version(packageJSON.version)
-  .arguments('<project-directory>')
-  .usage(`${chalk.green('<project-directory>')} [options]`)
+  .arguments('<project-name>')
+  .usage(`${chalk.green('<project-name>')} [options]`)
   .option('-v, --verbose', 'print additional logs')
-  .option('-d, --description [description]', 'Add description to project')
+  .option('-d, --description [description]', 'description to project')
+  .option('-a, --author [author]', 'author of the project')
+  .option('--ask-me', 'the create-ecma-app will ask about props in generation')
   .action((name, options) => {
     config = {
       appName: name,
@@ -18,7 +20,7 @@ new Command(packageJSON.name)
   })
   .allowUnknownOption()
   .on('--help', () => {
-    console.log(`    Only ${chalk.green('<project-directory>')} is required.\n`);
+    console.log(`\n  Only ${chalk.green('<project-directory>')} is required.\n`);
   })
   .parse(process.argv);
 
