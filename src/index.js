@@ -1,70 +1,67 @@
-const Generator = require('yeoman-generator')
-const { execSync } = require('child_process')
-const fs = require('fs')
-const path = require('path')
-const chalk = require('chalk')
-const config = require('./config')
+const Generator = require('yeoman-generator');
+const { execSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const chalk = require('chalk');
+const config = require('./config');
 
 const shouldUseYarn = () => {
   try {
-    execSync('yarnpkg --version', { stdio: 'ignore' })
-    return true
+    execSync('yarnpkg --version', { stdio: 'ignore' });
+    return true;
   } catch (e) {
-    return false
+    return false;
   }
-}
+};
 
 module.exports = class extends Generator {
-  constructor(args, options) {
-    super(args, options)
-  }
-
   prompting() {
     this.log(
-      `Salutations from ${chalk.red('create-ecma-app')} generator by Tacnoman`
+      `Salutations from ${chalk.red('create-ecma-app')} generator by Tacnoman`,
     );
 
-    var prompts = []
+    const prompts = [];
 
-    return this.prompt(prompts).then(props => {
-      this.props = props
-      this.props.author = `${this.user.git.name()} <${this.user.git.email()}>`
-      this.props.description = 'My awesome ecma project'
-      this.props.packageName = config.appName
-      this.props.packageNamePascalCase = this.props.packageName.
-        split('-').
-        reduce( (PascalCase, word) => (
-          PascalCase + word.replace(/^([a-z])/, g => g[0].toUpperCase())
-        ), '')
-      this.props.year = new Date().getFullYear()
-      this.destinationRoot(path.join(process.cwd(), this.props.packageName))
-    })
+    return this.prompt(prompts).then((props) => {
+      this.props = props;
+      this.props.author = `${this.user.git.name()} <${this.user.git.email()}>`;
+      this.props.description = 'My awesome ecma project';
+      this.props.packageName = config.appName;
+      this.props.packageNamePascalCase = this.props.packageName
+        .split('-')
+        .reduce((PascalCase, word) => (
+          PascalCase + word.replace(/^([a-z])/, (g) => g[0].toUpperCase())
+        ), '');
+      this.props.year = new Date().getFullYear();
+      this.destinationRoot(path.join(process.cwd(), this.props.packageName));
+    });
   }
 
   writing() {
     const walkSync = (dir, filelist = []) => {
-      fs.readdirSync(dir).forEach(file => {
-        filelist = fs.statSync(path.join(dir, file)).isDirectory()
-          ? walkSync(path.join(dir, file), filelist)
-          : filelist.concat(path.join(dir, file).replace(`${this.sourceRoot()}/`, ''))
-      })
-      return filelist
-    }
+      let listOfFiles = filelist;
+      fs.readdirSync(dir).forEach((file) => {
+        listOfFiles = fs.statSync(path.join(dir, file)).isDirectory()
+          ? walkSync(path.join(dir, file), listOfFiles)
+          : listOfFiles.concat(path.join(dir, file).replace(`${this.sourceRoot()}/`, ''));
+      });
+      return filelist;
+    };
 
-    const filelist = walkSync(this.sourceRoot())
+    const filelist = walkSync(this.sourceRoot());
 
-    filelist.forEach(file => {
+    filelist.forEach((file) => {
       this.fs.copyTpl(
         this.templatePath(file),
         this.destinationPath(file.replace('_gitignore', '.gitignore')),
-        this.props
-      )
-    })
+        this.props,
+      );
+    });
   }
 
   install() {
     const packageLib = shouldUseYarn() ? 'yarn' : 'npm';
-    this.log(chalk.blue.bold(`❯  Calling ${packageLib} install...`))
+    this.log(chalk.blue.bold(`❯  Calling ${packageLib} install...`));
     this.spawnCommandSync(
       packageLib,
       [
@@ -73,9 +70,9 @@ module.exports = class extends Generator {
       {
         cwd: `${process.cwd()}`,
         stdio: 'inherit',
-        shell: true
-      }
-    )
+        shell: true,
+      },
+    );
 
     const command = packageLib === 'npm' ? 'npm run' : 'yarn';
 
@@ -116,6 +113,6 @@ module.exports = class extends Generator {
 
     ${chalk.cyan(`${command} validate`)}
       Run tests and Eslint to CI
-    `)
+    `);
   }
 };
