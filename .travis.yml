@@ -11,5 +11,7 @@ script:
   - cd my-app && yarn validate
   - echo "Try to build the app"
   - npm run build
+  - echo "Try to run project"
+  - npm start
   - echo "Try to build for web"
   - npm run build:web
