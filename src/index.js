@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const Generator = require('yeoman-generator');
 const { execSync } = require('child_process');
 const fs = require('fs');
@@ -39,11 +40,10 @@ module.exports = class extends Generator {
 
   writing() {
     const walkSync = (dir, filelist = []) => {
-      let listOfFiles = filelist;
       fs.readdirSync(dir).forEach((file) => {
-        listOfFiles = fs.statSync(path.join(dir, file)).isDirectory()
-          ? walkSync(path.join(dir, file), listOfFiles)
-          : listOfFiles.concat(path.join(dir, file).replace(`${this.sourceRoot()}/`, ''));
+        filelist = fs.statSync(path.join(dir, file)).isDirectory()
+          ? walkSync(path.join(dir, file), filelist)
+          : filelist.concat(path.join(dir, file).replace(`${this.sourceRoot()}/`, ''));
       });
       return filelist;
     };
