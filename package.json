@@ -7,7 +7,7 @@
     "create-ecma-app": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint .",
     "release:patch": "standard-version --release-as patch && git push origin master --tag && npm publish",
     "release:minor": "standard-version --release-as minor && git push origin master --tag && npm publish",
@@ -40,6 +40,11 @@
     "eslint-plugin-import": "^2.20.1",
     "jest": "^25.1.0",
     "standard-version": "^7.1.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns" : [
+      "<rootDir>/src/templates/"
+    ]
   },
   "repository": {
     "type": "git",

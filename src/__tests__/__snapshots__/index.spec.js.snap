@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#getListOfFile should match the list of files 1`] = `
+Array [
+  ".babelrc",
+  ".editorconfig",
+  ".eslintrc.js",
+  "_gitignore",
+  "package.json",
+  "src/__tests__/message.spec.js",
+  "src/index.js",
+  "src/lib/logger.js",
+  "src/message.js",
+]
+`;
