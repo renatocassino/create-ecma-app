@@ -1,18 +1,9 @@
 const Generator = require('yeoman-generator');
-const { execSync } = require('child_process');
 const path = require('path');
 const chalk = require('chalk');
 const config = require('./config');
 const getListOfFiles = require('./getListOfFiles');
-
-const shouldUseYarn = () => {
-  try {
-    execSync('yarnpkg --version', { stdio: 'ignore' });
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
+const shouldUseYarn = require('./shouldUseYarn');
 
 module.exports = class extends Generator {
   prompting() {
@@ -25,7 +16,7 @@ module.exports = class extends Generator {
     return this.prompt(prompts).then((props) => {
       this.props = props;
       this.props.author = `${this.user.git.name()} <${this.user.git.email()}>`;
-      this.props.description = 'My awesome ecma project';
+      this.props.description = config.description || 'My awesome ecma project';
       this.props.packageName = config.appName;
       this.props.commandToRun = shouldUseYarn() ? 'yarn' : 'npm run';
       this.props.packageNamePascalCase = this.props.packageName
