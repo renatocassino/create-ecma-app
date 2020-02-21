@@ -9,3 +9,7 @@ script:
   - echo "Running generator of project"
   - node index.js my-app
   - cd my-app && yarn validate
+  - echo "Try to build the app"
+  - npm run build
+  - echo "Try to build for web"
+  - npm run build:web
