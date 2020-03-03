@@ -52,6 +52,7 @@ In your project you have the commands:
 | build         | Build the project in `dist` folder                       |
 | build:web     | Build the project in `dist` folder to run in browser     |
 | dev           | Run in development mode with watcher                     |
+| exec          | Run the code in `src` folder once without build          |
 | lint          | Run lint validator using Airbnb lint pattern             |
 | lint:fix      | Run lint validator and fix some bugs if exists           |
 | test          | Run tests using jest                                     |
